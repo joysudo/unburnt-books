@@ -1,13 +1,570 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>JavaScript Devbox</title>
-    <meta charset="UTF-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Stop Banning Books — Sample Site</title>
+    <style>
+      :root {
+        --bg: #fbfdf9;
+        --card: #ffffff;
+        --accent: #5fa23a;
+        --accent-dark: #2f6f1b;
+        --muted: #6b6b6b;
+        --shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+        font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: #111;
+      }
+      header {
+        background: linear-gradient(90deg, var(--accent) 0%, #9fd67f 60%);
+        padding: 20px 24px;
+        color: white;
+      }
+      .container {
+        max-width: 1000px;
+        margin: 28px auto;
+        padding: 0 20px;
+      }
+      nav {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      nav .logo {
+        font-weight: 800;
+        letter-spacing: 1px;
+      }
+      nav a {
+        color: white;
+        text-decoration: none;
+        padding: 8px 12px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.08);
+      }
+      .main-card {
+        background: var(--card);
+        padding: 22px;
+        border-radius: 16px;
+        box-shadow: var(--shadow);
+        display: flex;
+        gap: 20px;
+        align-items: center;
+      }
+      .hero-left {
+        flex: 1;
+      }
+      .hero-right {
+        width: 220px;
+        text-align: center;
+      }
+      h1 {
+        margin: 6px 0;
+        font-size: 28px;
+      }
+      p.lead {
+        color: var(--muted);
+        margin: 6px 0 12px;
+      }
+
+      /* page sections */
+      section {
+        display: none;
+        margin-top: 18px;
+      }
+      section.active {
+        display: block;
+      }
+
+      /* recommender */
+      .recommender {
+        display: flex;
+        gap: 18px;
+        align-items: center;
+      }
+      .card {
+        background: linear-gradient(180deg, #f7fff0, #fff);
+        padding: 18px;
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+        min-width: 160px;
+        text-align: center;
+      }
+      .big-ques {
+        font-size: 56px;
+        color: var(--accent-dark);
+        line-height: 1;
+      }
+      .genre-row {
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+        margin-top: 12px;
+      }
+      .btn {
+        background: var(--accent);
+        color: white;
+        padding: 8px 12px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+      .btn.ghost {
+        background: transparent;
+        color: var(--accent);
+        border: 2px solid var(--accent);
+      }
+
+      /* letter template */
+      .letter {
+        background: var(--card);
+        padding: 18px;
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+      }
+      label {
+        display: block;
+        font-size: 13px;
+        margin-top: 10px;
+      }
+      input[type="text"],
+      textarea,
+      select {
+        width: 100%;
+        padding: 10px;
+        margin-top: 6px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+      }
+      textarea {
+        min-height: 140px;
+      }
+
+      /* about */
+      .team {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+      .person {
+        background: var(--card);
+        padding: 12px;
+        border-radius: 10px;
+        min-width: 180px;
+        box-shadow: var(--shadow);
+      }
+      .avatar {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        background: var(--accent);
+        display: inline-block;
+        margin-right: 8px;
+        vertical-align: middle;
+      }
+
+      /* map grid */
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 8px;
+      }
+      .state {
+        background: #e6f6d9;
+        border-radius: 8px;
+        padding: 14px;
+        text-align: center;
+        cursor: pointer;
+      }
+      .state.dark {
+        background: #2f6f1b;
+        color: white;
+      }
+
+      footer {
+        margin-top: 36px;
+        text-align: center;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      /* small screens */
+      @media (max-width: 720px) {
+        .recommender {
+          flex-direction: column;
+        }
+        .main-card {
+          flex-direction: column;
+        }
+        .grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+    </style>
   </head>
-
   <body>
-    <div id="app"></div>
+    <header>
+      <div class="container">
+        <nav>
+          <div class="logo">STOP BANNING BOOKS</div>
+          <div style="flex: 1"></div>
+          <a href="#home" data-link>Home</a>
+          <a href="#recommender" data-link>Book Recommender</a>
+          <a href="#letter" data-link>Write a Letter</a>
+          <a href="#map" data-link>See Your State</a>
+          <a href="#about" data-link>About</a>
+        </nav>
+      </div>
+    </header>
 
-    <script src="./index.mjs" type="module"></script>
+    <main class="container">
+      <!-- Home / Info Page -->
+      <section id="home" class="active">
+        <div class="main-card">
+          <div class="hero-left">
+            <h1>Stop banning books</h1>
+            <p class="lead">
+              Books help us see the world from other perspectives. Learn how
+              many books have been challenged, find resources, and take action.
+            </p>
+            <div
+              style="
+                display: flex;
+                gap: 12px;
+                margin-top: 12px;
+                align-items: center;
+              "
+            >
+              <div
+                style="
+                  text-align: center;
+                  padding: 10px 18px;
+                  background: #f4fff0;
+                  border-radius: 10px;
+                "
+              >
+                <div style="font-weight: 700; font-size: 20px">578</div>
+                <div style="font-size: 12px; color: var(--muted)">
+                  Titles challenged
+                </div>
+              </div>
+              <div
+                style="
+                  text-align: center;
+                  padding: 10px 18px;
+                  background: #fff7e6;
+                  border-radius: 10px;
+                "
+              >
+                <div style="font-weight: 700; font-size: 20px">100%</div>
+                <div style="font-size: 12px; color: var(--muted)">
+                  Transparency
+                </div>
+              </div>
+              <div
+                style="
+                  text-align: center;
+                  padding: 10px 18px;
+                  background: #f0fff7;
+                  border-radius: 10px;
+                "
+              >
+                <div style="font-weight: 700; font-size: 20px">50</div>
+                <div style="font-size: 12px; color: var(--muted)">
+                  States tracking bans
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="hero-right">
+            <div
+              style="
+                width: 160px;
+                height: 160px;
+                border-radius: 50%;
+                background: linear-gradient(
+                  180deg,
+                  var(--accent) 0%,
+                  #a6d87b 100%
+                );
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: var(--shadow);
+              "
+            >
+              <div style="font-size: 48px; color: white">✊</div>
+            </div>
+            <p style="margin-top: 12px; color: var(--muted); font-size: 13px">
+              Find a banned book, learn how to support your library, or write to
+              your representative.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Recommender Page -->
+      <section id="recommender">
+        <h2>Want a book rec?</h2>
+        <div class="recommender">
+          <div class="card">
+            <div class="big-ques">?</div>
+            <div style="margin-top: 10px; font-weight: 700" id="rec-title">
+              Pick a genre
+            </div>
+            <div class="genre-row">
+              <button class="btn ghost" data-genre="YA">YA</button>
+              <button class="btn ghost" data-genre="Adult">Adult</button>
+              <button class="btn ghost" data-genre="Kids">Kids</button>
+            </div>
+            <div style="margin-top: 12px">
+              <button class="btn" id="rec-btn">Surprise me</button>
+            </div>
+          </div>
+          <div class="card" style="flex: 1; text-align: left" id="rec-card">
+            <div style="font-size: 16px; font-weight: 700" id="rec-name">
+              Not selected
+            </div>
+            <div style="color: var(--muted); margin-top: 8px" id="rec-desc">
+              We'll show a short description and why it has been challenged.
+            </div>
+            <div style="margin-top: 14px">
+              <a id="rec-link" target="_blank">More info</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Letter template Page -->
+      <section id="letter">
+        <h2>Write a letter</h2>
+        <div class="letter">
+          <label for="your-name">Your name</label>
+          <input id="your-name" type="text" placeholder="e.g. Maria Gomez" />
+          <label for="your-city">City / State</label>
+          <input
+            id="your-city"
+            type="text"
+            placeholder="e.g. Springfield, IL"
+          />
+          <label for="recipient">Recipient</label>
+          <select id="recipient">
+            <option>School Board</option>
+            <option>Principal</option>
+            <option>State Representative</option>
+          </select>
+
+          <label for="letter-body">Letter (editable template)</label>
+          <textarea id="letter-body">
+Hello — my name is [NAME]. I am a resident of [CITY]. I value books that help students learn about different perspectives, and I ask that you reconsider challenges to classroom and library materials. Please ensure that all members of our community have access to diverse books. Thank you for your time.
+
+Sincerely,
+[NAME]
+[City, State]</textarea
+          >
+
+          <div style="display: flex; gap: 8px; margin-top: 12px">
+            <button class="btn" id="fill-btn">Fill template</button>
+            <button class="btn ghost" id="copy-btn">Copy to clipboard</button>
+            <button class="btn ghost" id="mailto-btn">Open mail client</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Page -->
+      <section id="about">
+        <h2>About us</h2>
+        <div class="team">
+          <div class="person">
+            <div><span class="avatar"></span><strong>Rachel</strong></div>
+            <div style="color: var(--muted); font-size: 13px; margin-top: 8px">
+              Organizer & researcher. Loves libraries.
+            </div>
+          </div>
+          <div class="person">
+            <div><span class="avatar"></span><strong>Arjun</strong></div>
+            <div style="color: var(--muted); font-size: 13px; margin-top: 8px">
+              Community outreach and design.
+            </div>
+          </div>
+          <div class="person">
+            <div><span class="avatar"></span><strong>Joy</strong></div>
+            <div style="color: var(--muted); font-size: 13px; margin-top: 8px">
+              Education policy and letters.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Map / States Page -->
+      <section id="map">
+        <h2>See your state</h2>
+        <p style="color: var(--muted); font-size: 13px">
+          Click a state to see a small sample of challenged titles (demo data).
+        </p>
+        <div class="grid" id="state-grid" style="margin-top: 12px">
+          <!-- We'll inject small squares programmatically to mimic map -->
+        </div>
+
+        <div
+          style="
+            margin-top: 14px;
+            background: var(--card);
+            padding: 12px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+          "
+          id="state-detail"
+        >
+          Click a state to view demo details.
+        </div>
+      </section>
+
+      <footer>
+        Demo site — not an official organization. Built to match a simple
+        wireframe.
+      </footer>
+    </main>
+
+    <script>
+      // Simple router (hash)
+      const links = document.querySelectorAll("[data-link]");
+      function showPage(hash) {
+        const id = (hash || "#home").replace("#", "");
+        document
+          .querySelectorAll("main section")
+          .forEach((s) => s.classList.remove("active"));
+        const sec = document.getElementById(id);
+        if (sec) sec.classList.add("active");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+      window.addEventListener("hashchange", () => showPage(location.hash));
+      links.forEach((a) => a.addEventListener("click", (e) => {}));
+      showPage(location.hash || "#home");
+
+      // Recommender demo data
+      const books = [
+        {
+          title: "The Hate U Give",
+          genre: "YA",
+          desc: "A YA novel about race and police violence — frequently challenged for content.",
+          link: "https://en.wikipedia.org/wiki/The_Hate_U_Give",
+        },
+        {
+          title: "Maus",
+          genre: "Adult",
+          desc: "Graphic novel about the Holocaust — was challenged for content and depiction of violence.",
+          link: "https://en.wikipedia.org/wiki/Maus",
+        },
+        {
+          title: "And Tango Makes Three",
+          genre: "Kids",
+          desc: "Picture book about two penguins raising a chick — challenged for LGBTQ+ themes.",
+          link: "https://en.wikipedia.org/wiki/And_Tango_Makes_Three",
+        },
+        {
+          title: "Beloved",
+          genre: "Adult",
+          desc: "A novel about slavery and trauma — challenged for sexual content and themes.",
+          link: "https://en.wikipedia.org/wiki/Beloved_(novel)",
+        },
+        {
+          title: "Stamped: Racism, Antiracism, and You",
+          genre: "YA",
+          desc: "History book for teens — challenged for how it discusses race and history.",
+          link: "https://en.wikipedia.org/wiki/Stamped_(book)",
+        },
+      ];
+
+      let chosenGenre = null;
+      document.querySelectorAll(".genre-row button").forEach((btn) =>
+        btn.addEventListener("click", () => {
+          chosenGenre = btn.dataset.genre;
+          document.getElementById("rec-title").textContent = chosenGenre;
+        })
+      );
+      document.getElementById("rec-btn").addEventListener("click", () => {
+        const pool = chosenGenre
+          ? books.filter((b) => b.genre === chosenGenre)
+          : books;
+        const pick = pool[Math.floor(Math.random() * pool.length)];
+        document.getElementById("rec-name").textContent = pick.title;
+        document.getElementById("rec-desc").textContent = pick.desc;
+        const a = document.getElementById("rec-link");
+        a.href = pick.link;
+        a.textContent = "Learn more";
+      });
+
+      // Letter template
+      const fillBtn = document.getElementById("fill-btn");
+      const copyBtn = document.getElementById("copy-btn");
+      const mailBtn = document.getElementById("mailto-btn");
+      fillBtn.addEventListener("click", () => {
+        const name = document.getElementById("your-name").value || "[NAME]";
+        const city =
+          document.getElementById("your-city").value || "[CITY, STATE]";
+        let body = document.getElementById("letter-body").value;
+        body = body.replace(/\[NAME\]/g, name).replace(/\[CITY\]/g, city);
+        document.getElementById("letter-body").value = body;
+      });
+      copyBtn.addEventListener("click", async () => {
+        const text = document.getElementById("letter-body").value;
+        try {
+          await navigator.clipboard.writeText(text);
+          alert("Letter copied to clipboard");
+        } catch (e) {
+          alert("Copy failed — select and copy manually.");
+        }
+      });
+      mailBtn.addEventListener("click", () => {
+        const recip = document.getElementById("recipient").value;
+        const subject = encodeURIComponent("Thoughts on book challenges");
+        const body = encodeURIComponent(
+          document.getElementById("letter-body").value
+        );
+        window.location.href = `mailto:?subject=${subject}&body=${body}`;
+      });
+
+      // Map / grid
+      const sampleStates = [
+        { code: "AL", name: "Alabama", count: 5 },
+        { code: "AK", name: "Alaska", count: 0 },
+        { code: "AZ", name: "Arizona", count: 12 },
+        { code: "AR", name: "Arkansas", count: 2 },
+        { code: "CA", name: "California", count: 68 },
+        { code: "CO", name: "Colorado", count: 8 },
+        { code: "CT", name: "Connecticut", count: 1 },
+        { code: "DE", name: "Delaware", count: 0 },
+        { code: "FL", name: "Florida", count: 40 },
+        { code: "GA", name: "Georgia", count: 6 },
+        { code: "HI", name: "Hawaii", count: 0 },
+        { code: "ID", name: "Idaho", count: 3 },
+      ];
+      const grid = document.getElementById("state-grid");
+      sampleStates.forEach((s) => {
+        const el = document.createElement("div");
+        el.className = "state" + (s.count > 15 ? " dark" : "");
+        el.textContent = s.code;
+        el.title = `${s.name} — ${s.count} challenged titles (demo)`;
+        el.addEventListener("click", () => {
+          document.getElementById(
+            "state-detail"
+          ).innerHTML = `<strong>${s.name} (${s.code})</strong><div style="color:var(--muted);margin-top:8px">${s.count} demo challenged titles.</div><ul style="margin-top:8px"><li>Sample Title A</li><li>Sample Title B</li></ul>`;
+        });
+        grid.appendChild(el);
+      });
+
+      // keyboard shortcut: press R to go to recommender
+      window.addEventListener("keydown", (e) => {
+        if (e.key.toLowerCase() === "r") location.hash = "#recommender";
+      });
+    </script>
   </body>
 </html>
