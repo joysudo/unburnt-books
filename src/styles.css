@@ -18,22 +18,13 @@ body {
   color: #111;
 }
 
-header {
-  background: seagreen;
-  padding: 20px 24px;
-  color: white;
-}
-
-.container {
-  max-width: 1000px;
-  margin: 28px auto;
-  padding: 0 20px;
-}
-
 nav {
   display: flex;
   gap: 10px;
   align-items: center;
+  background: seagreen;
+  padding: 20px 24px;
+  color: white;
 }
 
 nav .logo {
@@ -47,19 +38,4 @@ nav a {
   padding: 8px 12px;
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.08);
-}
-
-@media (max-width: 720px) {
-  /* This is a media query from your original code.
-     It's a good practice to keep it for responsive design,
-     even if it's not strictly for the navigation bar in this case. */
-  .recommender {
-    flex-direction: column;
-  }
-  .main-card {
-    flex-direction: column;
-  }
-  .grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
 }
