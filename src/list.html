@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Taskly</title>
+    <link rel="stylesheet" href="list.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav>
+      <!-- i've added a nav bar here! -->
+      <div class="logo">STOP BANNING BOOKS</div>
+      <a href="index.html" data-link>Home</a>
+      <a href="recommender.html" data-link>Book Recommender</a>
+      <a href="letter.html" data-link>Write a Letter</a>
+      <a href="map.html" data-link>See Your State</a>
+      <a href="list.html" data-link>Your Reading List</a>
+      <a href="quiz.html" data-link>Quiz Yourself</a>
+      <a href="about.html" data-link>About</a>
+    </nav>
+    <div class="container">
+      <h1>Taskly</h1>
+      <form id="task-form">
+        <input
+          type="text"
+          id="task-input"
+          placeholder="Enter a new task"
+          class="funnel-sans-text"
+          required
+        />
+        <button type="submit" class="funnel-sans-text add-btn">Add</button>
+      </form>
+      <ul id="task-list"></ul>
+    </div>
+    <script src="list.js"></script>
+  </body>
+</html>
