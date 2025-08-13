@@ -15,5 +15,7 @@
     "css",
     "javascript"
   ],
-  "dependencies": {}
+  "dependencies": {
+    "papaparse": "^5.5.3"
+  }
 }

@@ -20,12 +20,13 @@ body {
 
 nav {
   display: flex;
-  flex: 1
   gap: 10px;
   align-items: center;
   background: seagreen;
   padding: 20px 24px;
   color: white;
+  align-self: flex-start;
+  width: 100%;
 }
 
 nav .logo {
@@ -39,4 +40,145 @@ nav a {
   padding: 8px 12px;
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.08);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.main-issue-sub {
+  font-weight: bold;
+}
+.home-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  margin-left: 15px;
+}
+
+.recommender-container {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.recommender-container img {
+  object-fit: contain;
+}
+
+.recommender-container .book-image {
+  display: flex;
+  flex-direction: column;
+}
+
+.recommender-container .book-info {
+  max-width: 400px;
+}
+
+.recommender-container h1 {
+  font-size: 2em;
+  margin: 0;
+}
+
+.recommender-container h2 {
+  font-size: 1.2em;
+  font-style: italic;
+  margin-top: 5px;
+}
+
+.recommender-container p {
+  margin-top: 10px;
+}
+
+.recommender-container .controls {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.recommender-container select {
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid #aaa;
+}
+
+.recommender-container button {
+  padding: 10px 20px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.recommender-container .button:hover {
+  background-color: #333;
+}
+
+.books-challenged {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "menu content"
+    "footer footer";
+  grid-template-columns: 1fr 3fr;
+  gap: 5px;
+  padding: 5px;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
+}
+
+.books-challenged > div.header {
+  grid-area: header;
+}
+.books-challenged > div {
+  background-color: seagreen;
+  padding: 10px;
+  color: white;
+}
+
+.letter-container .letter {
+  background: var(--card);
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+.letter-container label {
+  display: block;
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+.letter-container input[type="text"],
+.letter-container textarea,
+.letter-container select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.letter-container textarea {
+  min-height: 140px;
+}
+
+.letter-container .letter-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.letter-container .btn {
+  background: var(--accent);
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.letter-container .btn.ghost {
+  background: transparent;
+  color: var(--accent);
+  border: 2px solid var(--accent);
 }
