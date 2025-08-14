@@ -1,0 +1,26 @@
+.about-container * {
+  margin: 0;
+  padding: 0;
+}
+.about-container h1 {
+  margin-top: 35px;
+  display: flex;
+  justify-content: center;
+}
+.about-container .team_image {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  gap: 1rem;
+  width: 300px !important;
+  margin: 0 auto;
+}
+.about-container .person-section {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.about-container .identity {
+  margin-top: 15px;
+}

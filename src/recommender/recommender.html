@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>this is a sample title header</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="recommender.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="logo">STOP BANNING BOOKS</div>
+      <a href="../index.html" data-link>Home</a>
+      <a href="recommender.html" data-link>Book Recommender</a>
+      <a href="../letter/letter.html" data-link>Write a Letter</a>
+      <a href="../list/list.html" data-link>Your Reading List</a>
+      <a href="../quiz/quiz.html" data-link>Quiz Yourself</a>
+      <a href="../about/about.html" data-link>About</a>
+    </nav>
+    <div class="recommender-container">
+      <div class="book-image">
+        <img
+          src="https://freesvg.org/img/closed-book-01.png"
+          alt="teal book drawing"
+        />
+        <div class="controls">
+          <select id="genre-dropdown">
+            <option value="">random genre</option>
+          </select>
+          <button id="go-button">go!</button>
+        </div>
+      </div>
+      <div class="book-info">
+        <h1 id="book-title">Name of Book</h1>
+        <h2 id="book-author"><em>Book Author</em></h2>
+        <p id="book-description">
+          The description of the book will appear here. Sourced from
+          <a
+            href="https://www.kaggle.com/datasets/chielerli/banned-book-dataset"
+            >Chieler Li on Kaggle</a
+          >, cleaned by <a href="https://github.com/joysudo/unburnt">Joy Su</a>.
+          Select randomly from 2.5k banned books or pick a genre.
+        </p>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <script src="recommender.js"></script>
+  </body>
+</html>

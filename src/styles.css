@@ -140,6 +140,7 @@ nav a {
   padding: 18px;
   border-radius: 12px;
   box-shadow: var(--shadow);
+  margin-left: 5px;
 }
 
 .letter-container label {
@@ -181,4 +182,39 @@ nav a {
   background: transparent;
   color: var(--accent);
   border: 2px solid var(--accent);
+}
+
+.home-container {
+  text-align: center;
+  line-height: 2;
+}
+
+.parallax-container {
+  position: relative;
+  overflow: hidden;
+  height: 1500px;
+}
+
+.parallax-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 90%;
+  background-image: url("https://images.pexels.com/photos/159751/book-address-book-learning-learn-159751.jpeg?_gl=1*1rqispi*_ga*MTMyMjQzODQ1Ny4xNzU0NDkwODMz*_ga_8JE65Q40S6*czE3NTUwOTcwMTAkbzMkZzEkdDE3NTUwOTkyMTEkajQkbDAkaDA.");
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  transform: translateY(0px);
+  z-index: 1;
+}
+
+.parallax-text {
+  position: relative;
+  z-index: 2;
+  padding: 300px 30px;
+  font-size: 2em;
+  color: white;
+  text-align: center;
+  text-shadow: 3px 3px seagreen;
 }
