@@ -19,11 +19,12 @@ body {
 }
 
 .container {
-  background: #27187e;
+  background: darkseagreen;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   width: 500px;
+  margin-top: 10%;
   text-align: center;
 }
 
@@ -50,14 +51,14 @@ input[type="text"] {
 .add-btn {
   padding: 5px 10px;
   border: none;
-  background-color: #758bfd;
+  background-color: seagreen;
   color: #f1f2f6;
   border-radius: 4px;
   cursor: pointer;
 }
 
 .add-btn:hover {
-  background-color: #3657fc;
+  background-color: darkseagreen;
 }
 
 ul {
@@ -91,25 +92,25 @@ li input[type="text"] {
   padding: 5px 10px;
   margin: 0 5px;
   border: none;
-  background-color: #ff8600;
+  background-color: seagreen;
   color: #f1f2f6;
   border-radius: 4px;
   cursor: pointer;
 }
 
 .buttons button:hover {
-  background-color: #e07800;
+  background-color: darkseagreen;
 }
 
 .buttons .save-btn {
   padding: 5px 10px;
   border: none;
-  background-color: #758bfd;
+  background-color: yellowgreen;
   color: #f1f2f6;
   border-radius: 4px;
   cursor: pointer;
 }
 
 .buttons .save-btn:hover {
-  background-color: #3657fc;
+  background-color: darkseagreen;
 }
