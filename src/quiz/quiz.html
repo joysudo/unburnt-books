@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript Sandbox</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="quiz.css" />
+  </head>
+
+  <body>
+    <nav>
+      <div class="logo">STOP BANNING BOOKS</div>
+      <a href="../index.html" data-link>Home</a>
+      <a href="../recommender/recommender.html" data-link>Book Recommender</a>
+      <a href="../letter/letter.html" data-link>Write a Letter</a>
+      <a href="../list/list.html" data-link>Your Reading List</a>
+      <a href="../quiz/quiz.html" data-link>Quiz Yourself</a>
+      <a href="../about/about.html" data-link>About</a>
+    </nav>
+    <div class="quiz-container">
+      <h1>Banned Books Quiz</h1>
+      <h2>Test your knowledge about Banned Books History</h2>
+
+      <div id="quiz">
+        <!-- Questions -->
+        <div id="questions"><h2>Questions Go Here:</h2></div>
+
+        <!-- Answers -->
+        <div id="answers" class="btn-grid">
+          <button class="btn">Answer1</button>
+          <button class="btn">Answer2</button>
+          <button class="btn">Answer3</button>
+          <button class="btn">Answer4</button>
+        </div>
+
+        <!-- Final score display -->
+        <div id="score-container" class="hidden">
+          <h2>Your final score:</h2>
+          <h3 id="final-score"></h3>
+          <button id="restart" class="btn">Restart</button>
+        </div>
+      </div>
+    </div>
+    <script src="quiz.js" type="module"></script>
+  </body>
+</html>

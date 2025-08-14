@@ -1,0 +1,85 @@
+.recommender-container {
+  display: flex;
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* image */
+.book-image {
+  flex: 0 0 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.book-image img {
+  width: 100%;
+}
+
+/* Controls styling */
+.controls {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.controls select,
+.controls button {
+  padding: 0.5rem 0.8rem;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.controls select:focus,
+.controls button:focus {
+  outline: none;
+  border-color: darkseagreen;
+}
+
+.controls button {
+  background-color: seagreen;
+  color: white;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.2s ease;
+}
+
+.controls button:hover {
+  background-color: seagreen;
+}
+
+/* Book info styling */
+.book-info {
+  flex: 1;
+}
+
+.book-info h1 {
+  font-size: 1.8rem;
+  margin-bottom: 0.3rem;
+  color: #222;
+}
+
+.book-info h2 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: #666;
+}
+
+.book-info p {
+  line-height: 1.6;
+}
+
+.book-info a {
+  color: #2b6cb0;
+  text-decoration: none;
+}
+
+.book-info a:hover {
+  text-decoration: underline;
+}

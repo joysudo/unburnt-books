@@ -1,0 +1,220 @@
+:root {
+  --bg: #fbfdf9;
+  --card: #ffffff;
+  --accent: #5fa23a;
+  --accent-dark: #2f6f1b;
+  --muted: #6b6b6b;
+  --shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  font-family: sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: #111;
+}
+
+nav {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  background: seagreen;
+  padding: 20px 24px;
+  color: white;
+  align-self: flex-start;
+  width: 100%;
+}
+
+nav .logo {
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.main-issue-sub {
+  font-weight: bold;
+}
+.home-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  margin-left: 15px;
+}
+
+.recommender-container {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.recommender-container img {
+  object-fit: contain;
+}
+
+.recommender-container .book-image {
+  display: flex;
+  flex-direction: column;
+}
+
+.recommender-container .book-info {
+  max-width: 400px;
+}
+
+.recommender-container h1 {
+  font-size: 2em;
+  margin: 0;
+}
+
+.recommender-container h2 {
+  font-size: 1.2em;
+  font-style: italic;
+  margin-top: 5px;
+}
+
+.recommender-container p {
+  margin-top: 10px;
+}
+
+.recommender-container .controls {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.recommender-container select {
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid #aaa;
+}
+
+.recommender-container button {
+  padding: 10px 20px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.recommender-container .button:hover {
+  background-color: #333;
+}
+
+.books-challenged {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "menu content"
+    "footer footer";
+  grid-template-columns: 1fr 3fr;
+  gap: 5px;
+  padding: 5px;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
+}
+
+.books-challenged > div.header {
+  grid-area: header;
+}
+.books-challenged > div {
+  background-color: seagreen;
+  padding: 10px;
+  color: white;
+}
+
+.letter-container .letter {
+  background: var(--card);
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  margin-left: 5px;
+}
+
+.letter-container label {
+  display: block;
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+.letter-container input[type="text"],
+.letter-container textarea,
+.letter-container select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.letter-container textarea {
+  min-height: 140px;
+}
+
+.letter-container .letter-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.letter-container .btn {
+  background: var(--accent);
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.letter-container .btn.ghost {
+  background: transparent;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+}
+
+.home-container {
+  text-align: center;
+  line-height: 2;
+}
+
+.parallax-container {
+  position: relative;
+  overflow: hidden;
+  height: 1500px;
+}
+
+.parallax-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 90%;
+  background-image: url("https://images.pexels.com/photos/159751/book-address-book-learning-learn-159751.jpeg?_gl=1*1rqispi*_ga*MTMyMjQzODQ1Ny4xNzU0NDkwODMz*_ga_8JE65Q40S6*czE3NTUwOTcwMTAkbzMkZzEkdDE3NTUwOTkyMTEkajQkbDAkaDA.");
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  transform: translateY(0px);
+  z-index: 1;
+}
+
+.parallax-text {
+  position: relative;
+  z-index: 2;
+  padding: 300px 30px;
+  font-size: 2em;
+  color: white;
+  text-align: center;
+  text-shadow: 3px 3px seagreen;
+}
